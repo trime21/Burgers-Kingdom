@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html
+        lang="pl"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Aplikacja Burgers Kingdom</title>
+    <link rel="stylesheet" th:href="@{/styles.css}">
+</head>
+<body>
+<h1 style="text-align:center">Witamy w Burgers Kingdom</h1>
+<img th:src="@{/images/logo.png}" alt="logo" th:class="center" />
+<p class="center">
+    <a th:href="@{/design}">Zrób własnego burgera</a>
+    <a th:href="@{/orders/list}">Lista zamówień</a>
+</p>
+</body>
+</html>

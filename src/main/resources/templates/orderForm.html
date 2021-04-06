@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html
+        lang="pl"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Aplikacja Burgers Kingdom</title>
+    <link rel="stylesheet" th:href="@{/styles.css}"/>
+</head>
+<body>
+
+<form method="POST" th:action="@{/orders}" th:object="${order}">
+    <h1 style="text-align:center">Zamów twojego burgera!</h1>
+    <img th:src="@{/images/logo.png}" alt="logo" th:class="center">
+    <a th:href="@{/}">Strona główna</a>
+    <a th:href="@{/design}" id="another">Przygotuj kolejnego burgera</a><br/>
+
+    <div th:if="${#fields.hasErrors()}">
+            <span class="validationError">
+            Usuń wymienione problemy i spróbuj ponownie
+            </span>
+    </div>
+
+    <h3>Adres dostarczenia burgera...</h3>
+    <label for="delivery_Name">Imię i nazwisko: </label>
+    <input type="text" th:field="*{delivery_Name}"/>
+    <span class="validationError"
+          th:if="${#fields.hasErrors('delivery_Name')}"
+          th:errors="*{delivery_Name}">Błąd imienia i nazwiska</span>
+    <br/>
+
+    <label for="delivery_Street">Ulica: </label>
+    <input type="text" th:field="*{delivery_Street}"/>
+    <span class="validationError"
+          th:if="${#fields.hasErrors('delivery_Street')}"
+          th:errors="*{delivery_Street}">Błąd ulicy</span>
+    <br/>
+
+    <label for="delivery_City">Miejscowość: </label>
+    <input type="text" th:field="*{delivery_City}"/>
+    <span class="validationError"
+          th:if="${#fields.hasErrors('delivery_City')}"
+          th:errors="*{delivery_City}">Błąd miejscowości</span>
+    <br/>
+
+    <label for="delivery_State">Województwo: </label>
+    <input type="text" th:field="*{delivery_State}"/>
+    <span class="validationError"
+          th:if="${#fields.hasErrors('delivery_State')}"
+          th:errors="*{delivery_State}">Błąd województwaV</span>
+    <br/>
+
+    <label for="delivery_Zip">Kod pocztowy: </label>
+    <input type="text" th:field="*{delivery_Zip}"/>
+    <span class="validationError"
+          th:if="${#fields.hasErrors('delivery_Zip')}"
+          th:errors="*{delivery_Zip}">Błąd kodu pocztowego</span>
+    <br/>
+
+    <h3>Sposób płatności...</h3>
+    <label for="cc_Number">Numer karty kredytowej: </label>
+    <input type="text" th:field="*{cc_Number}"/>
+    <span class="validationError"
+          th:if="${#fields.hasErrors('cc_Number')}"
+          th:errors="*{cc_Number}">Błąd numeru karty kredytowej</span>
+    <br/>
+
+    <label for="cc_Expiration">Data ważności: </label>
+    <input type="text" th:field="*{cc_Expiration}"/>
+    <span class="validationError"
+          th:if="${#fields.hasErrors('cc_Expiration')}"
+          th:errors="*{cc_Expiration}">Błąd daty ważności</span>
+    <br/>
+
+    <label for="cc_CVV">Kod CVV: </label>
+    <input type="text" th:field="*{cc_CVV}"/>
+    <span class="validationError"
+          th:if="${#fields.hasErrors('cc_CVV')}"
+          th:errors="*{cc_CVV}">Błąd kodu CVV</span>
+    <br/>
+
+    <input type="submit" value="Złóż zamówienie"/>
+</form>
+
+</body>
+</html>

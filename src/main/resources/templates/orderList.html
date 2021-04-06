@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html
+        lang="pl"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Aplikacja Burgers Kingdom</title>
+    <link rel="stylesheet" th:href="@{/styles.css}"/>
+
+</head>
+<body>
+<h1 style="text-align:center">Zamówienia</h1>
+<img th:src="@{/images/logo.png}" alt="logo" th:class="center"/>
+<a th:href="@{/}">Strona główna</a>
+<ul>
+    <li th:each="order : ${orders}">
+        <span th:text="${order.placed_At}">DATA</span> -
+        <span th:text="${order.delivery_Name}">IMIĘ I NAZWISKO</span>
+        <a th:href="@{/orders/deleteOrder(orderId=${order.id})}">Usuń</a>
+        <a th:href="@{/orders/editOrder(orderId=${order.id})}">Edytuj</a>
+        <ul>
+            <li th:each="burger : ${order.burger}">
+                <span th:text="${burger.name}">NAZWA</span>
+                <span th:each="skladniki : ${burger.ingredients}">
+              <span th:text="${skladniki.name}">SKŁADNIK</span>,
+            </span>
+            </li>
+
+        </ul>
+
+    </li>
+</ul>
+
+</body>
+</html>
